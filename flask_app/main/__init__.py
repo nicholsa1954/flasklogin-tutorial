@@ -1,5 +1,6 @@
 """Logged-in page routes."""
-from flask import Blueprint, redirect, render_template, url_for
+import datetime
+from flask import Blueprint, redirect, render_template, url_for, request
 from flask_login import current_user, login_required, logout_user
 
 # Blueprint Configuration
@@ -18,6 +19,8 @@ def dashboard():
         template="dashboard-template",
         current_user=current_user,
         body="You are now logged in!",
+        time = datetime.datetime.utcnow(),
+        args = request.args.to_dict()
     )
 
 

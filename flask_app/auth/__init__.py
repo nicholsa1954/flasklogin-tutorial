@@ -1,7 +1,7 @@
 """Routes for user authentication."""
 import datetime
 from flask import Blueprint, flash, redirect, render_template, request, url_for
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user
 
 from .forms import LoginForm, SignupForm
 from flask_app.models import User, db
@@ -26,7 +26,10 @@ def signup():
         existing_user = User.query.filter_by(email=form.email.data).first()
         if existing_user is None:
             user = User(
-                name=form.name.data, email=form.email.data
+                name=form.name.data, 
+                email=form.email.data,
+                credential = 'STAFF',
+                created_on = datetime.datetime.utcnow()     
             )
             user.set_password(form.password.data)
             db.session.add(user)

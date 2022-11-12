@@ -4,6 +4,8 @@ from flask import flash, redirect,  url_for
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_moment import Moment
+from werkzeug.debug import DebuggedApplication
 
 db = SQLAlchemy()
 login_manager = LoginManager()
@@ -19,6 +21,7 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
     migrate = Migrate(app, db)
+    moment = Moment(app)
     
     @login_manager.user_loader
     def load_user(user_id):
@@ -55,5 +58,8 @@ def create_app():
         # Compile static assets
         if True:
             compile_static_assets(app)
+            
+        if app.debug:
+            app.wsgi_app = DebuggedApplication(app.wsgi_app, evalex=True)
 
         return app
