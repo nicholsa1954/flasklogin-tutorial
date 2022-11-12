@@ -1,0 +1,12 @@
+<nav class="navbar">
+
+         <ul class="nav navbar-nav navbar-right">
+              {% if current_user.is_authenticated %}
+                  <li><a href="{{ url_for('main_bp.logout') }}">Log out</a></li>
+              {% else %}
+                  <li><a href="{{ url_for('auth_bp.login') }}">Log in</a></li>
+                {% endif %}
+          </ul>   
+
+</nav>
+   
