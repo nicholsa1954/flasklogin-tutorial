@@ -36,12 +36,12 @@ def create_app():
     with app.app_context():
         from .auth import auth_bp
         from .main import main_bp
-        # from .errors import errors_bp
+        from .errors import errors_bp
         from .assets import compile_static_assets
  
         # Register Blueprints
         app.register_blueprint(auth_bp)
-        # app.register_blueprint(errors_bp)
+        app.register_blueprint(errors_bp)
         app.register_blueprint(main_bp)        
 
         # Create Database Models
