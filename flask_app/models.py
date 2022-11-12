@@ -4,6 +4,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from . import db
 
+credentials =['OWNER', 'ADMIN', 'STAFF']
 
 class User(UserMixin, db.Model):
     """User account model."""
@@ -15,9 +16,12 @@ class User(UserMixin, db.Model):
     password = db.Column(
         db.String(200), primary_key=False, unique=False, nullable=False
     )
-    website = db.Column(db.String(60), index=False, unique=False, nullable=True)
     created_on = db.Column(db.DateTime, index=False, unique=False, nullable=True)
     last_login = db.Column(db.DateTime, index=False, unique=False, nullable=True)
+    credential = db.Column(db.String(8), index=False, unique=False, nullable=False, default = 'STAFF')
+    
+    def set_credential(self, credential):
+        self.credential = credential
 
     def set_password(self, password):
         """Create hashed password."""

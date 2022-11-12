@@ -1,16 +1,17 @@
 """Routes for user authentication."""
+import datetime
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_user
 
-from . import login_manager
 from .forms import LoginForm, SignupForm
-from .models import User, db
+from flask_app.models import User, db
 
 # Blueprint Configuration
 auth_bp = Blueprint(
     "auth_bp", __name__, template_folder="templates", static_folder="static"
 )
 
+from flask_app.main import main_bp
 
 @auth_bp.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -25,7 +26,7 @@ def signup():
         existing_user = User.query.filter_by(email=form.email.data).first()
         if existing_user is None:
             user = User(
-                name=form.name.data, email=form.email.data, website=form.website.data
+                name=form.name.data, email=form.email.data
             )
             user.set_password(form.password.data)
             db.session.add(user)
@@ -73,16 +74,4 @@ def login():
     )
 
 
-@login_manager.user_loader
-def load_user(user_id):
-    """Check if user is logged-in upon page load."""
-    if user_id is not None:
-        return User.query.get(user_id)
-    return None
 
-
-@login_manager.unauthorized_handler
-def unauthorized():
-    """Redirect unauthorized users to Login page."""
-    flash("You must be logged in to view that page.")
-    return redirect(url_for("auth_bp.login"))

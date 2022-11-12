@@ -20,7 +20,7 @@ class SignupForm(FlaskForm):
         "Password",
         validators=[
             DataRequired(),
-            Length(min=6, message="Select a stronger password."),
+            Length(min=4, message="Select a stronger password."),
         ],
     )
     confirm = PasswordField(
@@ -30,7 +30,7 @@ class SignupForm(FlaskForm):
             EqualTo("password", message="Passwords must match."),
         ],
     )
-    website = StringField("Website", validators=[Optional()])
+  
     submit = SubmitField("Register")
 
 
