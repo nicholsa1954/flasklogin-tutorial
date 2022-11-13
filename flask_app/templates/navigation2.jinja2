@@ -1,62 +1,54 @@
-    <!Doctype Html>  
-    <Html>     
-    <Head>      
-    <Title>     
-    Make a Navigation Bar  
-    </Title>  
-    <style type=text/css>   
-    body   
-    {  
-    height: 125vh;  
-    margin-top: 80px;  
-    padding: 30px;  
-    background-size: cover;  
-    font-family: sans-serif;  
-    }  
-    header {  
-    background-color: orange;  
-    position: fixed;  
-    left: 0;  
-    right: 0;  
-    top: 5px;  
-    height: 30px;  
-    display: flex;  
-    align-items: center;  
-    box-shadow: 0 0 25px 0 black;  
-    }  
-    header * {  
-    display: inline;  
-    }  
-    header li {  
-    margin: 20px;  
-    }  
-    header li a {  
-    color: blue;  
-    text-decoration: none;  
-    }  
-    </style>   
-    </Head>  
-    <Body>   
-    <header>  
-    <nav>  
-    <ul>  
-    <li>  
-    <a href="#"> Home </a>  
-    </li>  
-    <li>  
-    <a href="#"> About </a>  
-    </li>  
-    <li>  
-    <a href="#"> Contact </a>  
-    </li>  
-    <li> <a href="#"> Terms of use </a>  
-    </li>  
-    <li>  
-    <a href="#"> Join Us </a>  
-    </li>  
-    </ul>  
-    </nav>  
-    </header>  
-    You are at JavaTpoint Site.....  
-    </Body>   
-    </Html>  
+{# https://www.w3schools.com/css/css_navbar_horizontal.asp #}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+  border-right:2px solid #848482;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #3EB489;
+}
+
+.active {
+  background-color: #728C00;
+}
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="#home">Home</a></li>
+  {% if current_user.is_authenticated %}
+  <li style="float:right"><a href="{{ url_for('main_bp.logout') }}">Log out</a></li>
+  <li style="float:right"><a href="/dashapp/" class="dash-link"> Embedded Dash App </a></li>
+
+  {% endif %}
+</ul>
+
+</body>
+</html>
+
+

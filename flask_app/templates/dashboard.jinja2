@@ -13,8 +13,6 @@
     <p>The time is: {{ moment(time).format('LLLL') }}</p>
     <p>Your credentials are: {{ current_user.credential }} </p>
     <p>The passed args are: {{ args }}</p> 
-    <a href="/dashapp/" class="dash-link"> <span>Embedded Plotly Dash</span>
-    <a href="{{ url_for('main_bp.logout') }}">Log out</a>
   {% endif %}
 
 {% endblock %}
