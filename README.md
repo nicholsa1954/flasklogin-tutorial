@@ -15,6 +15,9 @@
 
 Add user authentication to your Flask app.
 
+Other resources:
+    Unit testing: https://testdriven.io/blog/flask-pytest/
+
 * **Tutorial**: https://hackersandslackers.com/flask-login-user-authentication/
 * **Demo**: https://flasklogin.hackersandslackers.app
 

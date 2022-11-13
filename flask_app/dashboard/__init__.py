@@ -11,6 +11,11 @@ import os
 
 from .layout import html_layout
 
+### For explanation of "routes_pathname_prefix" see 
+### https://community.plotly.com/t/host-dash-under-alternate-path/21237
+### and the Plotly documentation: https://dash.plotly.com/reference.
+### The prefix shows up again in the .jinga2 files.
+
 def init_dashboard(server):
     """Create a Plotly Dash dashboard."""
     app = dash.Dash(
