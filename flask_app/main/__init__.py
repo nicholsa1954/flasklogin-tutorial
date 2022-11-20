@@ -20,7 +20,7 @@ def dashboard():
         current_user=current_user,
         body="You are now logged in!",
         time = datetime.datetime.utcnow(),
-        args = request.args.to_dict()
+        username = current_user.name
     )
 
 

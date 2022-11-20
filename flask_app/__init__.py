@@ -55,7 +55,7 @@ def create_app():
         
         # Import Dash application
         from .dashboard import init_dashboard
-
+        # from .test_dashboard import init_dashboard
         app = init_dashboard(app)        
 
         # Compile static assets
@@ -77,5 +77,13 @@ def create_app():
         
             app.logger.setLevel(logging.INFO)
             app.logger.info('Flask_app startup')           
+            
+        @app.route("/", methods=["GET"])
+        def dashboard():
+            """Logged-in User Dashboard."""
+            dashboard_id = 2002
+            session['dashboard_id'] = dashboard_id
+            return redirect('/testdashapp/')
+ 
             
         return app

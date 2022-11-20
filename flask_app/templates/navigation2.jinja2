@@ -42,9 +42,10 @@ li a:hover:not(.active) {
 <ul>
   <li><a class="active" href="#home">Home</a></li>
   {% if current_user.is_authenticated %}
+  {# <li style="float:left"> 'Session is: '{{ session.get('credential', None) }}</li> #}
+  {# <li style="float:left">    URL is: /testdashapp/{{ session.get('credential', None) }} </li> #}
   <li style="float:right"><a href="{{ url_for('main_bp.logout') }}">Log out</a></li>
-  <li style="float:right"><a href="/dashapp/" class="dash-link"> Embedded Dash App </a></li>
-
+  <li style="float:right"><a href="/testdashapp/user?name={{ current_user.name }}" class="dash-link"> Embedded Dash App </a></li>
   {% endif %}
 </ul>
 
