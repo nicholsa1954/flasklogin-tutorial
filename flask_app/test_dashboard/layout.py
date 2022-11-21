@@ -91,8 +91,27 @@ def setup_layout(app):
 ### Docs on "Location": https://dash.plotly.com/dash-core-components/location
 ### More on templates: http://exploreflask.com/en/latest/templates.html
 import urllib
-from urllib.parse import *
-from flask import request, session
+from urllib.parse import urlparse, parse_qs, parse_qsl
+
+import pandas as pd
+import sqlite3
+
+credentials = ['OWNER', 'ADMIN', 'STAFF']
+query = """ SELECT * FROM 'flasklogin-users' """
+
+def test(user_name):
+    try:
+        conn = sqlite3.connect('./app2.db')
+    except: 
+        return 'BARFED!'
+    df = pd.read_sql_query( query , conn)
+    row = df.loc[df['name'] == user_name]
+    if not row.empty:
+        return row['credential'].values[0]
+    else: 
+        print(f'user {user_name} not found')
+        return 'NONE'
+
 def setup_layout2(app):
     
     # Custom HTML layout
@@ -103,18 +122,22 @@ def setup_layout2(app):
             html.Div(id='description')
         ])
 
-    # @app.callback(Output('description', 'children'),
-    #               [Input('url', 'pathname'),  
-    #                Input('url', 'searchdata')])
+    
+    ### http://127.0.0.1:5005/testdashapp/user?name=foo
+    ### Parsed: ParseResult(scheme='http', netloc='127.0.0.1:5005', path='/testdashapp/user', params='', query='name=foo', fragment='')
     
     @app.callback(Output('description', 'children'),
-                  [Input('url', 'pathname')])    
-    def display_page(pathname):
-        # parse_url = urllib.parse.urlparse(pathname)
-        foo, bar = pathname.split('/')
+                  [Input('url', 'href'), Input('url', 'pathname'), Input('url', 'search')])    
+    def display_page(href, pathname, search):
+
+        parsed = urlparse(href)   
+        parsed_dict = parse_qs(parsed.query)        
+        user_name = parsed_dict['name'][0]
         
-        my_string = 'Inputs: pathname {pathname}' \
-                    .format(pathname = type(pathname))
-        return html.Div([
-            html.H1(my_string)
-        ])
+        credential = test(user_name)
+        if credential in credentials:  
+            my_string = f'User: {user_name} -- credential: {credential}'
+            return html.H3(my_string)
+        else:
+            return html.H3(f'Failed finding credential for {user_name}')
+    
