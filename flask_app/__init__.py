@@ -1,7 +1,7 @@
 """Initialize app."""
 import os
 from flask import Flask
-from flask import flash, redirect,  url_for
+from flask import flash, redirect,  url_for, session
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
