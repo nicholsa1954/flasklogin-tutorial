@@ -5,6 +5,9 @@ from dash import dash_table
 from dash import dcc
 from dash import html
 
+from urllib.parse import urlparse,urlsplit,parse_qs
+import sqlite3
+
 import pandas as pd
 import time
 import os
@@ -20,7 +23,7 @@ def init_dashboard(server):
     """Create a Plotly Dash dashboard."""
     app = dash.Dash(
         server=server,
-        routes_pathname_prefix="/dashapp/",
+        routes_pathname_prefix="/testdashapp/",
         external_stylesheets=[
             "/static/dist/css/styles.css",
             "https://fonts.googleapis.com/css?family=Lato",

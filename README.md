@@ -19,8 +19,17 @@ Other resources:
     Unit testing: https://testdriven.io/blog/flask-pytest/
     Template inheritance: http://exploreflask.com/en/latest/templates.html
     Multi-page apps: https://dash.plotly.com/urls (see the section on "Multi-Page Apps Without Pages")
+	Navbars and controls:
+		https://www.w3schools.com/howto/howto_css_dropdown_navbar.asp
     General on flask: 
         http://exploreflask.com/en/latest/
+	Tables:
+		https://blog.miguelgrinberg.com/post/beautiful-interactive-tables-for-your-flask-templates
+		https://www.digitalocean.com/community/tutorials/how-to-use-flask-sqlalchemy-to-interact-with-databases-in-a-flask-application
+    General Flask development, intro course:
+        https://pythonhow.com/python-tutorial/flask/web-development-with-python-and-flask/
+
+
 
 * **Tutorial**: https://hackersandslackers.com/flask-login-user-authentication/
 * **Demo**: https://flasklogin.hackersandslackers.app
