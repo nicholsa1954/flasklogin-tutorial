@@ -25,6 +25,7 @@ Other resources:
         http://exploreflask.com/en/latest/
 	Tables:
 		https://blog.miguelgrinberg.com/post/beautiful-interactive-tables-for-your-flask-templates
+		https://blog.miguelgrinberg.com/post/beautiful-flask-tables-part-2
 		https://www.digitalocean.com/community/tutorials/how-to-use-flask-sqlalchemy-to-interact-with-databases-in-a-flask-application
     General Flask development, intro course:
         https://pythonhow.com/python-tutorial/flask/web-development-with-python-and-flask/
