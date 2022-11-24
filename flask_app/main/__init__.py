@@ -7,7 +7,19 @@ from flask_login import current_user, login_required, logout_user
 main_bp = Blueprint(
     "main_bp", __name__, template_folder="templates", static_folder="static"
 )
-
+    
+@main_bp.route("/users", methods=["GET"])
+@login_required    
+def user_list():
+      return render_template(
+        "my_basic_table_1.jinja2",
+        title="Flask-Login Tutorial",
+        template="dashboard-template",
+        current_user=current_user,
+        body="You are now logged in!",
+        time = datetime.datetime.utcnow(),
+        username = current_user.name             
+   )       
 
 @main_bp.route("/", methods=["GET"])
 @login_required

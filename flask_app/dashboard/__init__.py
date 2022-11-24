@@ -1,17 +1,5 @@
 """Instantiate a Dash app."""
 import dash
-from dash.dependencies import Input, Output
-from dash import dash_table
-from dash import dcc
-from dash import html
-
-from urllib.parse import urlparse,urlsplit,parse_qs
-import sqlite3
-
-import pandas as pd
-import time
-import os
-
 from .layout import setup_layout
 
 external_stylesheets=[

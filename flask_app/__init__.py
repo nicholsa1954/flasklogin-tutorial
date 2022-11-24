@@ -56,7 +56,10 @@ def create_app():
         # Import Dash application
         from .dashboard import init_dashboard
         # from .test_dashboard import init_dashboard
-        app = init_dashboard(app)        
+        app = init_dashboard(app)   
+        
+        from .user_list import init_userlist
+        app = init_userlist(app)
 
         # Compile static assets
         if True:

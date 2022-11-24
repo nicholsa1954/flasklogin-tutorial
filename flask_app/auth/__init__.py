@@ -63,6 +63,8 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user and user.check_password(password=form.password.data):
+            user.last_login = datetime.datetime.utcnow() 
+            db.session.commit()
             login_user(user)
             next_page = request.args.get("next")
             return redirect(next_page or url_for("main_bp.dashboard"))
