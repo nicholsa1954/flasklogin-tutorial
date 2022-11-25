@@ -1,5 +1,5 @@
 import dash
-from .layout import setup_layout
+from .layout import setup_layout, setup_callbacks
 
 external_stylesheets=[
     "/static/dist/css/styles.css",
@@ -20,4 +20,7 @@ def init_userlist(server):
     )
     
     setup_layout(app)
-    return app.server
+    return app, app.server
+
+def init_callbacks(dash_app):
+    setup_callbacks(dash_app)

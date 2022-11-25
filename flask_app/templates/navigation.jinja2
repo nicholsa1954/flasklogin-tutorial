@@ -79,13 +79,14 @@
  <div class="navbar">
   <a href="https://vdlfa.org">About</a>
   {% if current_user.is_authenticated %}
+  <a href="{{ url_for('main_bp.user_list') }}"> User Listing </a>
   <div class="dropdown">
-    <button class="dropbtn">Dropdown
+    <button class="dropbtn">Embedded Dash Apps
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="/testdashapp/user?name={{ current_user.name }}" class="dash-link"> Embedded Dash App </a>
-      <a href="#">Link 2</a>
+      <a href="/testdashapp/user?name={{ current_user.name }}" class="dash-link"> Stock Ticker </a>
+      <a href="/usertable/" class="dash-link"> User Listing </a>
       <a href="#">Link 3</a>
     </div>
   </div>

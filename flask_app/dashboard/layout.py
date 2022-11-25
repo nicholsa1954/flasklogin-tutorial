@@ -60,7 +60,11 @@ def setup_layout(app):
         ],
         id="dash-container",
     )
+    
+    return app
 
+
+def setup_callbacks(app):
     ### http://127.0.0.1:5005/testdashapp/user?name=foo
     ### Parsed: ParseResult(scheme='http', netloc='127.0.0.1:5005', path='/testdashapp/user', params='', query='name=foo', fragment='')
     

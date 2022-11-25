@@ -54,12 +54,14 @@ def create_app():
         db.create_all()
         
         # Import Dash application
-        from .dashboard import init_dashboard
+        from .dashboard import init_dashboard, init_callbacks
         # from .test_dashboard import init_dashboard
-        app = init_dashboard(app)   
+        dash_app1, app = init_dashboard(app)
+        init_callbacks(dash_app1)
         
-        from .user_list import init_userlist
-        app = init_userlist(app)
+        from .user_list import init_userlist, init_callbacks
+        dash_app2, app = init_userlist(app)
+        init_callbacks(dash_app2)
 
         # Compile static assets
         if True:
@@ -87,6 +89,13 @@ def create_app():
             dashboard_id = 2002
             session['dashboard_id'] = dashboard_id
             return redirect('/testdashapp/')
+        
+        @app.route("/", methods=["GET"])
+        def userlist():
+            """Logged-in User list."""
+            list_id = 2005
+            session['list_id'] = list_id
+            return redirect('/usertable/')
  
             
         return app

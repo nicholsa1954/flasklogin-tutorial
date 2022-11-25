@@ -13,7 +13,7 @@ html_layout = """
             <header>
               <div class="nav-wrapper">
                 <a href="/">
-                    <h1>Plotly Dash Flask Tutorial</h1>
+                    <h2>Dash App</h1>
                   </a>
                 <nav>
                 </nav>
