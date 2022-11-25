@@ -8,7 +8,7 @@ main_bp = Blueprint(
     "main_bp", __name__, template_folder="templates", static_folder="static"
 )
     
-@main_bp.route("/users", methods=["GET"])
+@main_bp.route("/", methods=["GET"])
 @login_required    
 def user_list():
       return render_template(
