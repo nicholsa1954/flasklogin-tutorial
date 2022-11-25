@@ -12,7 +12,7 @@ main_bp = Blueprint(
 @login_required    
 def user_list():
       return render_template(
-        "my_basic_table_1.jinja2",
+        "user_table.jinja2",
         title="Flask-Login Tutorial",
         template="dashboard-template",
         current_user=current_user,
